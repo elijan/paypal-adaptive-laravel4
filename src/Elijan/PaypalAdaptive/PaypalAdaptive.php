@@ -182,7 +182,10 @@ class PaypalAdaptive
 
         $this->log->addInfo("Execute Payment Response", array($response));
 
-        $this->handleResponse($response);
+
+        return $this->handleResponse($response)?true:false;
+
+
 
     }
 
@@ -289,8 +292,33 @@ class PaypalAdaptive
 
     public function getError()
     {
+
         return $this->error[0]->message;
 
+    }
+
+
+    public function getDetails($payKey)
+    {
+        $requestEnvelope = new \RequestEnvelope("en_US");
+
+        $paymentDetailsReq = new \PaymentDetailsRequest($requestEnvelope);
+
+        $paymentDetailsReq->payKey = $payKey;
+
+        $this->serviceRequest = new AdaptivePaymentsService($this->config);
+        try {
+            /* wrap API method calls on the service object with a try catch */
+            $response = $this->serviceRequest->PaymentDetails($paymentDetailsReq);
+
+            $this->handleResponse($response);
+
+        } catch(Exception $ex) {
+            require_once 'Common/Error.php';
+            exit;
+        }
+
+        return $response;
     }
 
 }
