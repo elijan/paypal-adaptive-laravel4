@@ -1,0 +1,21 @@
+{
+    "name": "elijan/paypal-adaptive",
+    "description": "",
+    "authors": [
+        {
+            "name": "Dealsealer",
+            "email": "elijan.sejic@dealsealer.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "paypal/adaptivepayments-sdk-php":"2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Elijan\\PaypalAdaptive": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
