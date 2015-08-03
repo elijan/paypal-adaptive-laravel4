@@ -72,6 +72,7 @@ class PaypalAdaptive
 
             $setPaymentOptionsRequest->receiverOptions[] = $receiverOptions;
 
+
             $receiverOptions->invoiceData = new \InvoiceData();
             $receiverOptions->invoiceData->item = $this->invoiceItems;
 
@@ -241,10 +242,10 @@ class PaypalAdaptive
 
 
         $this->payRequest = new \PayRequest( new \RequestEnvelope("en_US"), $this->method,
-                                    $this->config['cancelUrl'].'&ref_id='. $this->reference_id,
+                                    $this->config['cancelUrl'].'/'. $this->reference_id,
                                     $this->config['currencyCode'],
                                     $this->getReceivers(),
-                                    $this->config['returnUrl'].'&ref_id='. $this->reference_id
+                                    $this->config['returnUrl'].'/'. $this->reference_id
                                     );
 
         $this->log->addInfo("Pay Request:", (array)  $this->payRequest);
