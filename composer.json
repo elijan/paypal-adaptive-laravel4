@@ -3,7 +3,7 @@
     "description": "",
     "authors": [
         {
-            "name": "Dealsealer",
+            "name": "MePlus",
             "email": "elijan.sejic@dealsealer.com.au"
         }
     ],
@@ -17,5 +17,5 @@
             "Elijan\\PaypalAdaptive": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
